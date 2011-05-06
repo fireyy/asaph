@@ -4,7 +4,7 @@
 of posts and users */
 
 require_once( ASAPH_PATH.'lib/asaph.class.php' );
-require_once( ASAPH_PATH.'Dropbox/autoload.php' );
+require_once( ASAPH_PATH.'lib/asaph_dropbox.php' );
 
 class Asaph_Admin extends Asaph {
 	protected $userId = null;
@@ -182,12 +182,11 @@ class Asaph_Admin extends Asaph {
 				.date('Y/m/', $post['created'])
 				.$post['image'];
 			@unlink( $image );*/
-			$oauth = new Dropbox_OAuth_PHP(Asaph_Config::$consumerKey, Asaph_Config::$consumerSecret);
-            $dropbox = new Dropbox_API($oauth);
-            $tokens = $dropbox->getToken(Asaph_Config::$dropuname, Asaph_Config::$droppass);
-            $oauth->setToken($tokens);
+			$dropbox = new Dropbox(Asaph_Config::$consumerKey, Asaph_Config::$consumerSecret);
+            $dropbox->setOAuthToken("p9mslugwzmbcdzi");
+            $dropbox->setOAuthTokenSecret("rpk4hnoyyvuk7r9");
             try {
-                $dropbox->delete('Public/'.Asaph_Config::$images['imagePath'].date('Y/m/', $post['created']).$post['image']);
+                $dropbox->fileopsDelete('Public/'.Asaph_Config::$images['imagePath'].date('Y/m/', $post['created']).$post['image']);
             } catch (Exception $e) {
                 return "image-not-found";
             }

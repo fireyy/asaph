@@ -24,11 +24,11 @@ class Asaph_Config {
 	);
 	
 	// Dropbox key
-	public static $consumerKey = '5tlfqk1wxvbsomc';
-    public static $consumerSecret = 'xorve4zm6e6dk4p';
-    public static $dropuname = 'fireyy@gmail.com';
-    public static $droppass = 'zhuanl';
-    public static $dropurl = 'http://dl.dropbox.com/u/51074/';
+	public static $consumerKey = '';
+    public static $consumerSecret = '';
+    public static $dropuname = '';
+    public static $droppass = '';
+    public static $dropurl = 'http://dl.dropbox.com/u/xxxxxx/';
 	
 	// Settings for your mysql database
 	public static $db = array(
